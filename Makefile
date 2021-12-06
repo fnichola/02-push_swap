@@ -6,7 +6,7 @@
 #    By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 18:01:32 by fnichola          #+#    #+#              #
-#    Updated: 2021/12/06 16:38:29 by fnichola         ###   ########.fr        #
+#    Updated: 2021/12/06 22:44:36 by fnichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -MMD -MP -o $@ -c $<
 	
 $(NAME): $(OBJS) $(LIBFT_LIB)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o server
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(NAME)
 
 bonus:
 	$(MAKE) WITH_BONUS=1
