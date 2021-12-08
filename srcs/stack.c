@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:13:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/08 17:02:01 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/08 23:06:11 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 t_stack	*ft_stack_new_elem(int value)
 {
-	t_stack	*new_dlist;
+	t_stack	*new_elem;
 
-	new_dlist = malloc(sizeof(t_stack));
-	if (!new_dlist)
+	new_elem = malloc(sizeof(t_stack));
+	if (!new_elem)
 		return (NULL);
-	new_dlist->prev = NULL;
-	new_dlist->next = NULL;
-	new_dlist->value = value;
-	return (new_dlist);
+	new_elem->prev = NULL;
+	new_elem->next = NULL;
+	new_elem->value = value;
+	return (new_elem);
 }
 
 t_stack	*ft_stack_top(t_stack *elem)
