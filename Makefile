@@ -6,7 +6,7 @@
 #    By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 18:01:32 by fnichola          #+#    #+#              #
-#    Updated: 2021/12/06 22:44:36 by fnichola         ###   ########.fr        #
+#    Updated: 2021/12/08 16:30:42 by fnichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,11 @@ LIBFT_DIR = libft
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address
 
-SRCS = main.c
+SRCS = srcs/main.c \
+	   srcs/stack.c \
+	   srcs/addl_stack_operations.c
 
 ifdef WITH_BONUS
 endif
