@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/08 16:57:17 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:51:39 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,4 @@ void	ft_stack_push(t_stack **stack_top, t_stack *new_elem);
 t_stack	*ft_stack_pop(t_stack **stack_top);
 void	ft_stack_swap(t_stack **stack_top);
 void	ft_stack_rotate(t_stack **stack_top);
+void	ft_stack_rrotate(t_stack **stack_top);

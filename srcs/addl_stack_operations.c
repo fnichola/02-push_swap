@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:21:51 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/08 23:15:15 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:50:08 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_stack_rotate(t_stack **stack_top)
 	t_stack	*bottom_elem;
 	t_stack	*popped_elem;
 
+	if (!*stack_top)
+		return ;
 	bottom_elem = ft_stack_bottom(*stack_top);
 	popped_elem = ft_stack_pop(stack_top);
 	if (popped_elem == bottom_elem)
@@ -46,16 +48,20 @@ void	ft_stack_rotate(t_stack **stack_top)
 		popped_elem->next = bottom_elem;
 	}
 }
-/*
+
 void	ft_stack_rrotate(t_stack **stack_top)
 {
 	t_stack	*bottom_elem;
 
+	if (!*stack_top)
+		return ;
 	bottom_elem = ft_stack_bottom(*stack_top);
 	if (bottom_elem == *stack_top)
 		return ;
 	if (bottom_elem && bottom_elem->next)
 	{
+		bottom_elem->next->prev = NULL;
+		bottom_elem->next = NULL;
+		ft_stack_push(stack_top, bottom_elem);
 	}
 }
-*/

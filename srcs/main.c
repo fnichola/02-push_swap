@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/08 23:09:51 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/13 18:53:15 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	main(int argc, char **argv)
 
 	a_top = NULL;
 	init_stack_a(argc, argv, &a_top);
-	//ft_stack_swap(&a_top);
-	ft_stack_rotate(&a_top);
+	// ft_stack_swap(&a_top);
+	// ft_stack_rotate(&a_top);
+	ft_stack_rrotate(&a_top);
 	while (a_top)
 	{
 		ft_printf("%d\n", a_top->value);
