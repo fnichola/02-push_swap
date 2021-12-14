@@ -6,17 +6,17 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:13:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/08 23:06:11 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:02:47 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_stack	*ft_stack_new_elem(int value)
+t_stack_elem	*ft_stack_new_elem(int value)
 {
-	t_stack	*new_elem;
+	t_stack_elem	*new_elem;
 
-	new_elem = malloc(sizeof(t_stack));
+	new_elem = malloc(sizeof(t_stack_elem));
 	if (!new_elem)
 		return (NULL);
 	new_elem->prev = NULL;
@@ -25,7 +25,7 @@ t_stack	*ft_stack_new_elem(int value)
 	return (new_elem);
 }
 
-t_stack	*ft_stack_top(t_stack *elem)
+t_stack_elem	*ft_stack_top(t_stack_elem *elem)
 {
 	if (!elem)
 		return (NULL);
@@ -34,7 +34,7 @@ t_stack	*ft_stack_top(t_stack *elem)
 	return (elem);
 }
 
-t_stack	*ft_stack_bottom(t_stack *elem)
+t_stack_elem	*ft_stack_bottom(t_stack_elem *elem)
 {
 	if (!elem)
 		return (NULL);
@@ -44,7 +44,7 @@ t_stack	*ft_stack_bottom(t_stack *elem)
 }
 
 
-void	ft_stack_push(t_stack **stack_top, t_stack *new_elem)
+void	ft_stack_push(t_stack_elem **stack_top, t_stack_elem *new_elem)
 {
 	if (*stack_top == NULL)
 	{
@@ -56,9 +56,9 @@ void	ft_stack_push(t_stack **stack_top, t_stack *new_elem)
 	*stack_top = new_elem;
 }
 
-t_stack	*ft_stack_pop(t_stack **stack_top)
+t_stack_elem	*ft_stack_pop(t_stack_elem **stack_top)
 {
-	t_stack	*popped_elem;
+	t_stack_elem	*popped_elem;
 
 	popped_elem = *stack_top;
 	*stack_top = (*stack_top)->prev;

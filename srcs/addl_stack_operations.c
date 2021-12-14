@@ -6,16 +6,16 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:21:51 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/13 18:50:08 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:38:45 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_stack_swap(t_stack **stack_top)
+void	ft_stack_swap(t_stack_elem **stack_top)
 {
-	t_stack	*elem1;
-	t_stack	*elem2;
+	t_stack_elem	*elem1;
+	t_stack_elem	*elem2;
 
 	if (!(*stack_top))
 		return ;
@@ -28,10 +28,10 @@ void	ft_stack_swap(t_stack **stack_top)
 	}
 }
 
-void	ft_stack_rotate(t_stack **stack_top)
+void	ft_stack_rotate(t_stack_elem **stack_top)
 {
-	t_stack	*bottom_elem;
-	t_stack	*popped_elem;
+	t_stack_elem	*bottom_elem;
+	t_stack_elem	*popped_elem;
 
 	if (!*stack_top)
 		return ;
@@ -49,9 +49,9 @@ void	ft_stack_rotate(t_stack **stack_top)
 	}
 }
 
-void	ft_stack_rrotate(t_stack **stack_top)
+void	ft_stack_rrotate(t_stack_elem **stack_top)
 {
-	t_stack	*bottom_elem;
+	t_stack_elem	*bottom_elem;
 
 	if (!*stack_top)
 		return ;
@@ -64,4 +64,27 @@ void	ft_stack_rrotate(t_stack **stack_top)
 		bottom_elem->next = NULL;
 		ft_stack_push(stack_top, bottom_elem);
 	}
+}
+
+int	ft_stack_update_size(t_stack *stack)
+{
+	t_stack_elem	*elem;
+	int				size;
+
+	if (!stack)
+		return (0);
+	elem = stack->top;
+	if (!stack->top)
+	{
+		stack->size = 0;
+		return (0);
+	}
+	size = 1;
+	while (elem->prev)
+	{
+		elem = elem->prev;
+		size++;
+	}
+	stack->size = size;
+	return (size);
 }
