@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/14 15:39:43 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/15 18:01:08 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,19 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	init_data(argc, argv, &data);
+	do_operation(&data, PB);
+	do_operation(&data, PB);
 	while (data.a.top)
 	{
 		ft_printf("%d\n", data.a.top->value);
 		free(ft_stack_pop(&data.a.top));
 	}
-	ft_printf("---\n a \n");
+	ft_printf("---\n a \n\n");
+	while (data.b.top)
+	{
+		ft_printf("%d\n", data.b.top->value);
+		free(ft_stack_pop(&data.b.top));
+	}
+	ft_printf("---\n b \n");
 	return (0);
 }
