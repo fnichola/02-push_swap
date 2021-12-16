@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 18:22:49 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/16 19:03:21 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void	init_data(int argc, char **argv, t_data *data)
 	data->b.top = NULL;
 	data->b.size = 0;
 	// data->solution = 
+	data->instruction_count = 0;
 	i = argc;
 	while (--i > 0)
-		ft_stack_push(&data->a.top, ft_stack_new_elem(ft_atoi(argv[i])));
+		ft_stack_push(&data->a.top, ft_stack_new_elem(ft_atoi(argv[i]))); // add malloc error handling!
 	ft_stack_update_size(&data->a);
 }
 
@@ -34,17 +35,13 @@ int	main(int argc, char **argv)
 
 	init_data(argc, argv, &data);
 	push_swap(&data);
+
+	ft_printf("Instructions: %d\n", data.instruction_count);
 	while (data.a.top)
 	{
 		ft_printf("%d\n", data.a.top->value);
 		free(ft_stack_pop(&data.a.top));
 	}
 	ft_printf("---\n a \n\n");
-	while (data.b.top)
-	{
-		ft_printf("%d\n", data.b.top->value);
-		free(ft_stack_pop(&data.b.top));
-	}
-	ft_printf("---\n b \n");
 	return (0);
 }
