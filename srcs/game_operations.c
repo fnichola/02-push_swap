@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:21:06 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/15 17:46:08 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/16 18:44:59 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,22 @@ void	do_operation(t_data *data, t_operation op_code)
 		ft_stack_swap(&data->b.top);
 	}
 	else if (op_code == PA)
-		ft_stack_push(&data->a.top, ft_stack_pop(&data->b.top));
+	{
+		if (ft_stack_push(&data->a.top, ft_stack_pop(&data->b.top)))
+		{
+			data->a.size++;
+			data->b.size--;
+		}
+	}
 	else if (op_code == PB)
-		ft_stack_push(&data->b.top, ft_stack_pop(&data->a.top));
+	{
+		if (ft_stack_push(&data->b.top, ft_stack_pop(&data->a.top)))
+		{
+			data->a.size--;
+			data->b.size++;
+		}
+
+	}
 	else if (op_code == RA)
 		ft_stack_rotate(&data->a.top);
 	else if (op_code == RB)

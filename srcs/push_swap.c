@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 18:23:59 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/16 18:45:40 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,26 @@ static void	sort_3(t_data *data)
 
 static void	sort_6(t_data *data)
 {
-	(void)data;
+	t_stack_elem	*ptr;
+	t_stack_elem	*smallest_elem;
+
+	while (data->a.size > 3)
+	{
+		ptr = data->a.top;
+		smallest_elem = data->a.top;
+		while (ptr)
+		{
+			if (ptr->value < smallest_elem->value)
+				smallest_elem = ptr;
+			ptr = ptr->prev;
+		}
+		while (data->a.top != smallest_elem)
+			do_operation(data, RRA);
+		do_operation(data, PB);
+	}
+	sort_3(data);
+	while (data->b.size > 0)
+		do_operation(data, PA);
 }
 
 void	push_swap(t_data *data)

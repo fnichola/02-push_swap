@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 17:44:44 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/16 18:40:55 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef enum operation {
 t_stack_elem	*ft_stack_new_elem(int value);
 t_stack_elem	*ft_stack_top(t_stack_elem *elem);
 t_stack_elem	*ft_stack_bottom(t_stack_elem *elem);
-void	ft_stack_push(t_stack_elem **stack_top, t_stack_elem *new_elem);
+int	ft_stack_push(t_stack_elem **stack_top, t_stack_elem *new_elem);
 t_stack_elem	*ft_stack_pop(t_stack_elem **stack_top);
 void	ft_stack_swap(t_stack_elem **stack_top);
 void	ft_stack_rotate(t_stack_elem **stack_top);
