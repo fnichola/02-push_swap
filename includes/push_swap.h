@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/14 21:21:18 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/16 17:44:44 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,4 @@ void	ft_stack_rotate(t_stack_elem **stack_top);
 void	ft_stack_rrotate(t_stack_elem **stack_top);
 int	ft_stack_update_size(t_stack *stack);
 void	do_operation(t_data *data, t_operation op_code);
+void	push_swap(t_data *data);

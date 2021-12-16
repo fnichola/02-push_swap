@@ -6,7 +6,7 @@
 #    By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 18:01:32 by fnichola          #+#    #+#              #
-#    Updated: 2021/12/14 21:27:00 by fnichola         ###   ########.fr        #
+#    Updated: 2021/12/16 17:43:24 by fnichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 SRCS = srcs/main.c \
 	   srcs/stack.c \
 	   srcs/addl_stack_operations.c \
-	   srcs/game_operations.c
+	   srcs/game_operations.c \
+	   srcs/push_swap.c
 
 ifdef WITH_BONUS
 endif

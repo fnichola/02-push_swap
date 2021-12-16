@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/15 18:01:08 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/16 18:22:49 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ static void	init_data(int argc, char **argv, t_data *data)
 	data->b.top = NULL;
 	data->b.size = 0;
 	// data->solution = 
-	i = 1;
-	while (i < argc)
-	{
+	i = argc;
+	while (--i > 0)
 		ft_stack_push(&data->a.top, ft_stack_new_elem(ft_atoi(argv[i])));
-		i++;
-	}
 	ft_stack_update_size(&data->a);
 }
 
@@ -36,8 +33,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	init_data(argc, argv, &data);
-	do_operation(&data, PB);
-	do_operation(&data, PB);
+	push_swap(&data);
 	while (data.a.top)
 	{
 		ft_printf("%d\n", data.a.top->value);
