@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 18:45:40 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/17 16:52:58 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	push_swap(t_data *data)
 {
 	if (data->a.size <= 1)
 		return ;
-	if (is_sorted(data->a.top))
+	else if (is_sorted(data->a.top))
 		return ;
 	else if (data->a.size == 2)
 		sort_2(data);
@@ -97,4 +97,6 @@ void	push_swap(t_data *data)
 		sort_3(data);
 	else if (data->a.size <= 6)
 		sort_6(data);
+	else
+		quick_sort(data);
 }

@@ -6,14 +6,14 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 18:49:28 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:17:27 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 
 typedef struct		s_stack_elem {
-	int				value;
+	int					value;
 	struct s_stack_elem	*prev;
 	struct s_stack_elem	*next;
 }					t_stack_elem;
@@ -24,10 +24,12 @@ typedef struct	s_stack {
 }				t_stack;
 
 typedef struct	s_data {
-	t_stack		a;
-	t_stack		b;
-	t_list		*solution;
-	size_t		instruction_count;
+	t_stack			a;
+	t_stack			b;
+	t_stack_elem	*a_partition;
+	t_list			*b_partitions;
+	t_list			*solution;
+	size_t			instruction_count;
 }				t_data;
 
 typedef enum operation {
@@ -56,3 +58,4 @@ void	ft_stack_rrotate(t_stack_elem **stack_top);
 int	ft_stack_update_size(t_stack *stack);
 void	do_operation(t_data *data, t_operation op_code);
 void	push_swap(t_data *data);
+void	quick_sort(t_data *data);

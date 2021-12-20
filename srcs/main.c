@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 19:03:21 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:19:44 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,11 @@ int	main(int argc, char **argv)
 		free(ft_stack_pop(&data.a.top));
 	}
 	ft_printf("---\n a \n\n");
+	while (data.b.top)
+	{
+		ft_printf("%d\n", data.b.top->value);
+		free(ft_stack_pop(&data.b.top));
+	}
+	ft_printf("---\n b \n\n");
 	return (0);
 }
