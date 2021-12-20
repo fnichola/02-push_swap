@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 14:21:06 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 18:50:35 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/17 16:51:23 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	do_operation(t_data *data, t_operation op_code)
 			data->a.size--;
 			data->b.size++;
 		}
-
 	}
 	else if (op_code == RA)
 		ft_stack_rotate(&data->a.top);

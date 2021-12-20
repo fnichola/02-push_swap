@@ -6,7 +6,7 @@
 #    By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 18:01:32 by fnichola          #+#    #+#              #
-#    Updated: 2021/12/16 17:43:24 by fnichola         ###   ########.fr        #
+#    Updated: 2021/12/17 16:54:51 by fnichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS = srcs/main.c \
 	   srcs/stack.c \
 	   srcs/addl_stack_operations.c \
 	   srcs/game_operations.c \
-	   srcs/push_swap.c
+	   srcs/push_swap.c \
+	   srcs/quick_sort.c
 
 ifdef WITH_BONUS
 endif
