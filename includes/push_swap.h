@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/17 21:17:27 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 14:47:30 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,4 @@ int	ft_stack_update_size(t_stack *stack);
 void	do_operation(t_data *data, t_operation op_code);
 void	push_swap(t_data *data);
 void	quick_sort(t_data *data);
+void	print_stacks(t_data *data);

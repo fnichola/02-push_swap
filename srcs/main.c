@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/20 14:45:51 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 15:21:53 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	init_data(int argc, char **argv, t_data *data)
 	data->b.size = 0;
 	// data->solution = 
 	data->instruction_count = 0;
+	data->b_partitions = NULL;
 	i = argc;
 	while (--i > 0)
 		ft_stack_push(&data->a.top, ft_stack_new_elem(ft_atoi(argv[i]))); // add malloc error handling!
@@ -31,19 +32,38 @@ static void	init_data(int argc, char **argv, t_data *data)
 
 void	print_stacks(t_data *data)
 {
+	t_stack	a;
+	t_stack	b;
+
+	a = data->a;
+	b = data->b;
+
 	ft_printf("Instructions: %d\n", data->instruction_count);
-	while (data->a.top)
+	while (a.top || b.top)
 	{
-		ft_printf("%d\n", data->a.top->value);
-		free(ft_stack_pop(&data->a.top));
+		if (a.size > b.size)
+		{
+			ft_printf("%d\n", a.top->value);
+			a.size--;
+			a.top = a.top->prev;
+		}
+		else if (b.size > a.size)
+		{
+			ft_printf(" \t%d\n", b.top->value);
+			b.size--;
+			b.top = b.top->prev;
+		}
+		else
+		{
+			ft_printf("%d\t%d\n", a.top->value, b.top->value);
+			a.size--;
+			b.size--;
+			a.top = a.top->prev;
+			b.top = b.top->prev;
+		}
 	}
-	ft_printf("---\n a \n\n");
-	while (data->b.top)
-	{
-		ft_printf("%d\n", data->b.top->value);
-		free(ft_stack_pop(&data->b.top));
-	}
-	ft_printf("---\n b \n\n");
+	ft_printf("_\t_\na\tb\n\n");
+	getchar();
 }
 
 int	main(int argc, char **argv)
@@ -51,6 +71,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	init_data(argc, argv, &data);
+	print_stacks(&data);
 	push_swap(&data);
 	print_stacks(&data);
 	return (0);
