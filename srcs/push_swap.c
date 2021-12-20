@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/17 16:52:58 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 23:24:48 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,18 +85,39 @@ static void	sort_6(t_data *data)
 		do_operation(data, PA);
 }
 
+int	partition_size(t_stack_elem *stack_top)
+{
+	t_stack_elem	*ptr;
+	int				size;
+
+	ptr = stack_top;
+	size = 0;
+	while (ptr && !ptr->partition)
+	{
+		ptr = ptr->prev;
+		size++;
+	}
+	return (size);
+}
+
 void	push_swap(t_data *data)
 {
-	if (data->a.size <= 1)
+	int	part_size;
+
+	part_size = partition_size(data->a.top);
+	if (part_size <= 1 && data->b.size == 0)
 		return ;
 	else if (is_sorted(data->a.top))
 		return ;
-	else if (data->a.size == 2)
+	else if (part_size == 2)
 		sort_2(data);
-	else if (data->a.size == 3)
+	else if (part_size == 3)
 		sort_3(data);
-	else if (data->a.size <= 6)
+	else if (data->a.size <= 6 && data->b.size == 0)
 		sort_6(data);
+	else if (part_size > 3)
+		quick_sort_a(data);
 	else
-		quick_sort(data);
+		quick_sort_b(data);
+	push_swap(data);
 }

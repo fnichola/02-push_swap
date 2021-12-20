@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/20 14:47:30 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:52:31 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 typedef struct		s_stack_elem {
 	int					value;
+	int					partition;
 	struct s_stack_elem	*prev;
 	struct s_stack_elem	*next;
 }					t_stack_elem;
@@ -26,9 +27,6 @@ typedef struct	s_stack {
 typedef struct	s_data {
 	t_stack			a;
 	t_stack			b;
-	t_stack_elem	*a_partition;
-	t_list			*b_partitions;
-	t_list			*solution;
 	size_t			instruction_count;
 }				t_data;
 
@@ -58,5 +56,7 @@ void	ft_stack_rrotate(t_stack_elem **stack_top);
 int	ft_stack_update_size(t_stack *stack);
 void	do_operation(t_data *data, t_operation op_code);
 void	push_swap(t_data *data);
-void	quick_sort(t_data *data);
+void	quick_sort_a(t_data *data);
+void	quick_sort_b(t_data *data);
 void	print_stacks(t_data *data);
+int	stack_range_size(t_stack_elem *start, t_stack_elem *end);

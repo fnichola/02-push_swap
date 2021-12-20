@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/20 15:21:53 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:51:34 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ static void	init_data(int argc, char **argv, t_data *data)
 	data->a.top = NULL;
 	data->b.top = NULL;
 	data->b.size = 0;
-	// data->solution = 
 	data->instruction_count = 0;
-	data->b_partitions = NULL;
 	i = argc;
 	while (--i > 0)
 		ft_stack_push(&data->a.top, ft_stack_new_elem(ft_atoi(argv[i]))); // add malloc error handling!
@@ -43,19 +41,36 @@ void	print_stacks(t_data *data)
 	{
 		if (a.size > b.size)
 		{
-			ft_printf("%d\n", a.top->value);
+			ft_printf("%d", a.top->value);
+			if (data->a.top->partition)
+				ft_printf("*\n");
+			else
+				ft_printf("\n");
 			a.size--;
 			a.top = a.top->prev;
 		}
 		else if (b.size > a.size)
 		{
-			ft_printf(" \t%d\n", b.top->value);
+			ft_printf(" \t%d", b.top->value);
+			if (data->b.top->partition)
+				ft_printf("*\n");
+			else
+				ft_printf("\n");
 			b.size--;
 			b.top = b.top->prev;
 		}
 		else
 		{
-			ft_printf("%d\t%d\n", a.top->value, b.top->value);
+			ft_printf("%d", a.top->value);
+			if (data->a.top->partition)
+				ft_printf("*\t");
+			else
+				ft_printf("\t");
+			ft_printf("%d", b.top->value);
+			if (data->b.top->partition)
+				ft_printf("*\n");
+			else
+				ft_printf("\n");
 			a.size--;
 			b.size--;
 			a.top = a.top->prev;

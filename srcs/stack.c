@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:13:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 18:40:38 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 22:56:05 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_stack_elem	*ft_stack_new_elem(int value)
 		return (NULL);
 	new_elem->prev = NULL;
 	new_elem->next = NULL;
+	new_elem->partition = 0;
 	new_elem->value = value;
 	return (new_elem);
 }
