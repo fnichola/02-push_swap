@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/16 19:03:21 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/20 14:39:59 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,29 @@ static void	init_data(int argc, char **argv, t_data *data)
 	ft_stack_update_size(&data->a);
 }
 
+void	print_stacks(t_data *data)
+{
+	ft_printf("Instructions: %d\n", data->instruction_count);
+	while (data->a.top)
+	{
+		ft_printf("%d\n", data->a.top->value);
+		free(ft_stack_pop(&data->a.top));
+	}
+	ft_printf("---\n a \n\n");
+	while (data->b.top)
+	{
+		ft_printf("%d\n", data->b.top->value);
+		free(ft_stack_pop(&data->b.top));
+	}
+	ft_printf("---\n b \n\n");
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
 
 	init_data(argc, argv, &data);
 	push_swap(&data);
-
-	ft_printf("Instructions: %d\n", data.instruction_count);
-	while (data.a.top)
-	{
-		ft_printf("%d\n", data.a.top->value);
-		free(ft_stack_pop(&data.a.top));
-	}
-	ft_printf("---\n a \n\n");
+	print_stacks(&data);
 	return (0);
 }
