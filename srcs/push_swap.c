@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 16:51:22 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 18:27:28 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,10 @@ void	push_swap(t_data *data)
 {
 	int	size;
 
-	// ft_printf("push_swap!!!\n");
+	ft_printf("push_swap!!!\n");
 	size = unsorted_size(data);
-	// ft_printf("unsorted size = %d\n", size);
-	// print_stacks(data);
+	ft_printf("unsorted size = %d\n", size);
+	print_stacks(data);
 	if (size <= 1 && data->b.size == 0)
 		return ;
 	else if (is_sorted(data) && data->b.size == 0)
