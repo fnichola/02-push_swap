@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/20 23:24:48 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 14:47:36 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,21 @@ int	is_sorted(t_stack_elem *stack_top)
 {
 	t_stack_elem	*ptr;
 
-	if (!stack_top->prev)
+	if (!stack_top)
 		return (1);
-	ptr = stack_top->prev;
-	while (ptr)
+	if (stack_top->prev)
 	{
-		if (ptr->value < ptr->next->value)
-			return (0);
-		ptr = ptr->prev;
+		ptr = stack_top->prev;
+		while (ptr && !ptr->partition)
+		{
+			if (ptr->value < ptr->next->value)
+				return (0);
+			ptr = ptr->prev;
+		}
+		if (ptr)
+			ptr->partition = 0;
 	}
+	stack_top->partition = 1;
 	return (1);
 }
 
@@ -104,18 +110,21 @@ void	push_swap(t_data *data)
 {
 	int	part_size;
 
+	// ft_printf("push_swap!\n");
 	part_size = partition_size(data->a.top);
+	// ft_printf("part_size = %d\n", part_size);
+	// print_stacks(data);
 	if (part_size <= 1 && data->b.size == 0)
 		return ;
-	else if (is_sorted(data->a.top))
+	else if (is_sorted(data->a.top) && data->b.size == 0)
 		return ;
 	else if (part_size == 2)
 		sort_2(data);
-	else if (part_size == 3)
+	else if (data->a.size == 3 && data->b.size == 0)
 		sort_3(data);
 	else if (data->a.size <= 6 && data->b.size == 0)
 		sort_6(data);
-	else if (part_size > 3)
+	else if (part_size > 2)
 		quick_sort_a(data);
 	else
 		quick_sort_b(data);

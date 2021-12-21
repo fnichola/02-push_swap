@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/20 23:25:30 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 14:31:27 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,30 @@ void	quick_sort_a(t_data *data)
 void	quick_sort_b(t_data *data)
 {
 	t_stack_elem	*pivot;
+	size_t			rb_count;
 
-	pivot = ft_stack_bottom(data->a.top);
-	while (data->a.top != pivot)
+	rb_count = 0;
+	if (data->b.top && data->b.top->partition)
 	{
-		if (data->a.top->value < pivot->value)
-			do_operation(data, PB);
+		do_operation(data, PA);
+		return ;
+	}
+	else if (partition_size(data->b.top) <= 3)
+	{
+		while (data->b.top && !data->b.top->partition)
+			do_operation(data, PA);
+		return ;
+	}
+	pivot = select_pivot(data->b.top);
+	pivot->partition = 1;
+	while (data->b.top != pivot)
+	{
+		if (data->b.top->value > pivot->value)
+			do_operation(data, PA);
 		else
-			do_operation(data, RA);
-		print_stacks(data);
+		{
+			do_operation(data, RB);
+			rb_count++;
+		}
 	}
 }
