@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 15:58:34 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 16:38:30 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,15 @@ void	quick_sort_b(t_data *data)
 			do_operation(data, RB);
 			rb_count++;
 		}
+	}
+	if (rb_count > 0)
+	{
+		do_operation(data, PA);
+		while (rb_count > 0)
+		{
+			do_operation(data, RRB);
+			rb_count--;
+		}
+		do_operation(data, PB);
 	}
 }
