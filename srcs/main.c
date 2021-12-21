@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 14:08:12 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 16:26:05 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	print_stacks(t_data *data)
 		if (a.size > b.size)
 		{
 			ft_printf("%d", a.top->value);
-			if (a.top->partition)
-				ft_printf("*\n");
+			if (a.top == data->sorted)
+				ft_printf("~\n");
 			else
 				ft_printf("\n");
 			a.size--;
@@ -62,8 +62,8 @@ void	print_stacks(t_data *data)
 		else
 		{
 			ft_printf("%d", a.top->value);
-			if (a.top->partition)
-				ft_printf("*\t");
+			if (a.top == data->sorted)
+				ft_printf("~\t");
 			else
 				ft_printf("\t");
 			ft_printf("%d", b.top->value);

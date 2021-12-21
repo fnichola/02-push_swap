@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 14:31:27 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 15:58:34 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	quick_sort_b(t_data *data)
 		do_operation(data, PA);
 		return ;
 	}
-	else if (partition_size(data->b.top) <= 3)
+	else if (partition_size(data->b.top) <= 2)
 	{
 		while (data->b.top && !data->b.top->partition)
 			do_operation(data, PA);

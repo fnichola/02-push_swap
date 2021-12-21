@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 13:58:35 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/21 16:04:48 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct	s_stack {
 typedef struct	s_data {
 	t_stack			a;
 	t_stack			b;
+	t_stack_elem	*sorted;
 	size_t			instruction_count;
 }				t_data;
 
