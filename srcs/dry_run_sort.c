@@ -6,67 +6,107 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:20:42 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 18:23:29 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/22 17:59:52 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
+
+void	quick_sort(int **array, size_t start, size_t end);
+int		g_size;
+
+void	print_array(int **array)
+{
+	for (int i = 0; i < g_size; i++)
+	{
+		printf("%d ", (*array)[i]);
+	}
+	printf("\n");
+	getchar();
+}
 
 void	dry_run_sort(t_stack_elem *start, t_stack_elem *end)
 {
-	t_stack			stack;
 	t_stack_elem	*ptr;
+	size_t			size;
+	int				*array;
 
-	stack.top = NULL;
-	stack.size = 0;
+	size = 0;
 	ptr = start;
 	while (ptr && ptr != end)
 	{
-		ft_stack_push(&stack.top, ft_stack_new_elem(ptr->value));
+		size++;
 		ptr = ptr->prev;
 	}
-
-
+	// if size == 0?
+	array = malloc(sizeof(int)*size);
+	// if (!array)
+		// exit(); // do something better?
+	quick_sort(&array, 0, size - 1);
 }
 
-t_stack_elem	*ft_mid_stack_pop(t_stack **stack, t_stack_elem *popped_element)
+static void		array_swap(int **array, size_t a, size_t b)
 {
-	if (popped_element == (*stack)->top)
-		return (ft_stack_pop(&(*stack)->top));
-	if (popped_element->prev)
-		popped_element->prev->next = popped_element->next;
-	popped_element->next->prev = popped_element->prev;
-	popped_element->next = NULL;
-	popped_element->prev = NULL;
-	return (popped_element);
+	int	temp;
+
+	temp = (*array)[a];
+	(*array)[a] = (*array)[b];
+	(*array)[b] = temp;
 }
 
-void	ft_stack_push_bottom(t_stack **stack, t_stack_elem *elem)
+void	quick_sort(int **array, size_t start, size_t end)
 {
-	t_stack_elem	*btm;
-
-	btm = ft_stack_bottom((*stack)->top);
-	btm->prev = elem;
-	elem->next = btm;
-	elem->prev = NULL;
-}
-
-void	quick_sort(t_stack **stack, t_stack_elem *start, t_stack_elem *end)
-{
-	t_stack_elem	*pivot;
-	t_stack_elem	*ptr;
+	int		pivot;
+	size_t	i;
+	size_t	p;
 
 	if (start == end)
 		return ;
-	pivot = (*stack)->top;
-	ptr = pivot->prev;
-	if (!ptr)
+	if (start + 1 == end && (*array)[start] < (*array)[end])
 		return ;
-	while (ptr)
+	pivot = (*array)[start];
+	p = start;
+	i = start + 1;
+	while (i <= end)
 	{
-		if (ptr->value < pivot->value)
-
+		if ((*array)[i] < pivot)
+		{
+			if (i == p + 1)
+			{
+				array_swap(array, i, p);
+				p++;
+			}
+			else
+			{
+				array_swap(array, p, p + 1);
+				array_swap(array, i, p);
+				p++;
+			}
+		}
+		i++;
 	}
-	quick_sort(stack,);
-	quick_sort(stack,);
+	print_array(array);
+	if (p > start)
+		quick_sort(array, start, p - 1);
+	if (p < end)
+		quick_sort(array, p + 1, end);
+}
+
+int	main(int argc, char **argv)
+{
+	int	*array;
+
+	if (argc < 2)
+		return (0);
+	g_size = argc - 1;
+	array = malloc(sizeof(int) * (argc - 1));
+	for (int i = 0; i < (argc - 1); i++)
+	{
+		array[i] = atoi(argv[i + 1]);
+	}
+	print_array(&array);
+	quick_sort(&array, 0, argc - 2);
+	free(array);
+	return (0);
 }
