@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 16:38:30 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/23 12:28:53 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	quick_sort_a(t_data *data)
 
 	ra_count = 0;
 	pivot = select_pivot(data->a.top);
+	ft_printf("median = %d\n", find_median(data->a.top, pivot)->value);
 	while (data->a.top != pivot)
 	{
 		if (data->a.top->value < pivot->value)
