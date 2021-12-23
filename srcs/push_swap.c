@@ -6,13 +6,13 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/21 18:27:28 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/23 16:59:29 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	is_sorted(t_data *data)
+int	mark_if_sorted_a(t_data *data)
 {
 	t_stack_elem	*ptr;
 
@@ -28,6 +28,26 @@ int	is_sorted(t_data *data)
 	}
 	data->sorted = data->a.top;
 	return (1);
+}
+
+/**
+ *  Count elements up to, but not including, "sorted" or "partition" marker in provided stack.
+ */
+int	partition_size(t_data *data, t_stack_elem *stack_top)
+{
+	t_stack_elem	*ptr;
+	int				size;
+
+	ptr = stack_top;
+	size = 0;
+	while (ptr)
+	{
+		if (ptr->partition || ptr == data->sorted)
+			break ;
+		size++;
+		ptr = ptr->prev;
+	}
+	return (size);
 }
 
 static void	sort_2(t_data *data)
@@ -88,50 +108,14 @@ static void	sort_6(t_data *data)
 		do_operation(data, PA);
 }
 
-int	partition_size(t_stack_elem *stack_top)
-{
-	t_stack_elem	*ptr;
-	int				size;
-
-	ptr = stack_top;
-	size = 0;
-	while (ptr && !ptr->partition)
-	{
-		ptr = ptr->prev;
-		size++;
-	}
-	return (size);
-}
-
-/**
- *  Count elements up to, but not including, "sorted" marker in stack a.
- */
-int	unsorted_size(t_data *data)
-{
-	t_stack_elem	*a;
-	int				size;
-
-	a = data->a.top;
-	size = 0;
-	while (a && a != data->sorted)
-	{
-		a = a->prev;
-		size++;
-	}
-	return (size);
-}
-
 void	push_swap(t_data *data)
 {
 	int	size;
 
-	ft_printf("push_swap!!!\n");
-	size = unsorted_size(data);
-	ft_printf("unsorted size = %d\n", size);
+	mark_if_sorted_a(data);
+	size = partition_size(data, data->a.top);
 	print_stacks(data);
 	if (size <= 1 && data->b.size == 0)
-		return ;
-	else if (is_sorted(data) && data->b.size == 0)
 		return ;
 	else if (size == 2)
 		sort_2(data);
@@ -139,7 +123,7 @@ void	push_swap(t_data *data)
 		sort_3(data);
 	else if (data->a.size <= 6 && data->b.size == 0)
 		sort_6(data);
-	else if (size > 2 && data->sorted != data->a.top)
+	else if (size > 2)
 		quick_sort_a(data);
 	else
 		quick_sort_b(data);

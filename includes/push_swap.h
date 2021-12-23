@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/22 23:34:59 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/23 16:40:33 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 typedef struct		s_stack_elem {
 	int					value;
 	int					partition;
+	int					pivot_marker;
 	struct s_stack_elem	*prev;
 	struct s_stack_elem	*next;
 }					t_stack_elem;
@@ -61,5 +62,5 @@ void	quick_sort_a(t_data *data);
 void	quick_sort_b(t_data *data);
 void	print_stacks(t_data *data);
 int	stack_range_size(t_stack_elem *start, t_stack_elem *end);
-int	partition_size(t_stack_elem *stack_top);
-t_stack_elem	*find_median(t_stack_elem *start, t_stack_elem *end);
+int	partition_size(t_data *data, t_stack_elem *stack_top);
+t_stack_elem	*find_median(t_stack_elem *start, int size);
