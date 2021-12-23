@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:20:42 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/23 12:27:38 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/23 13:08:02 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_stack_elem	*find_median(t_stack_elem *start, t_stack_elem *end)
 	size_t			size;
 	int				*array;
 	int				median_value;
+	size_t			i;
 
 	size = 0;
 	ptr = start;
@@ -47,6 +48,14 @@ t_stack_elem	*find_median(t_stack_elem *start, t_stack_elem *end)
 	array = malloc(sizeof(int)*size);
 	// if (!array)
 		// exit(); // do something better?
+	i = 0;
+	ptr = start;
+	while (i < size)
+	{
+		array[i] = ptr->value;
+		ptr = ptr->prev;
+		i++;
+	}
 	quick_sort(&array, 0, size - 1);
 	median_value = array[size / 2];
 	ptr = start;
