@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/23 16:47:53 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:44:34 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,6 @@ int	main(int argc, char **argv)
 
 	init_data(argc, argv, &data);
 	push_swap(&data);
-	print_stacks(&data);
+	// print_stacks(&data);
 	return (0);
 }

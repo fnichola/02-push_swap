@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/23 16:40:33 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:32:49 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_data {
 }				t_data;
 
 typedef enum operation {
-	SA,
+	SA = 0,
 	SB,
 	SS,
 	PA,
@@ -46,21 +46,20 @@ typedef enum operation {
 	RRR
 }				t_operation;
 
-
 t_stack_elem	*ft_stack_new_elem(int value);
 t_stack_elem	*ft_stack_top(t_stack_elem *elem);
 t_stack_elem	*ft_stack_bottom(t_stack_elem *elem);
-int	ft_stack_push(t_stack_elem **stack_top, t_stack_elem *new_elem);
+int				ft_stack_push(t_stack_elem **stack_top, t_stack_elem *new_elem);
 t_stack_elem	*ft_stack_pop(t_stack_elem **stack_top);
-void	ft_stack_swap(t_stack_elem **stack_top);
-void	ft_stack_rotate(t_stack_elem **stack_top);
-void	ft_stack_rrotate(t_stack_elem **stack_top);
-int	ft_stack_update_size(t_stack *stack);
-void	do_operation(t_data *data, t_operation op_code);
-void	push_swap(t_data *data);
-void	quick_sort_a(t_data *data);
-void	quick_sort_b(t_data *data);
-void	print_stacks(t_data *data);
-int	stack_range_size(t_stack_elem *start, t_stack_elem *end);
-int	partition_size(t_data *data, t_stack_elem *stack_top);
+void			ft_stack_swap(t_stack_elem **stack_top);
+void			ft_stack_rotate(t_stack_elem **stack_top);
+void			ft_stack_rrotate(t_stack_elem **stack_top);
+int				ft_stack_update_size(t_stack *stack);
+void			do_operation(t_data *data, t_operation op_code);
+void			push_swap(t_data *data);
+void			quick_sort_a(t_data *data);
+void			quick_sort_b(t_data *data);
+void			print_stacks(t_data *data);
+int				stack_range_size(t_stack_elem *start, t_stack_elem *end);
+int				partition_size(t_data *data, t_stack_elem *stack_top);
 t_stack_elem	*find_median(t_stack_elem *start, int size);

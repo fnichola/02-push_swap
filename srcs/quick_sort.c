@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/04 18:56:41 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:42:06 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	quick_sort_a(t_data *data)
 
 	ra_count = 0;
 	size = partition_size(data, data->a.top);
-	ft_printf("size = %d\n", size);
+	// ft_printf("size = %d\n", size);
 	pivot = find_median(data->a.top, size);
-	ft_printf("pivot = %d\n", pivot->value);
+	// ft_printf("pivot = %d\n", pivot->value);
 	pivot->pivot_marker = 1;
 	// print_stacks(data);
 	while (size--)
@@ -78,7 +78,7 @@ void	quick_sort_b(t_data *data)
 
 	rb_count = 0;
 	size = partition_size(data, data->b.top);
-	ft_printf("size = %d\n", size);
+	// ft_printf("size = %d\n", size);
 	if (data->b.top->partition)
 	{
 		data->b.top->partition = 0;
@@ -92,7 +92,7 @@ void	quick_sort_b(t_data *data)
 		return ;
 	}
 	pivot = find_median(data->b.top, size);
-	ft_printf("pivot = %d\n", pivot->value);
+	// ft_printf("pivot = %d\n", pivot->value);
 	pivot->pivot_marker = 1;
 	// print_stacks(data);
 	while (size--)
