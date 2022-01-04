@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/23 17:05:34 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/04 18:56:41 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,10 @@ void	quick_sort_b(t_data *data)
 		if (data->b.top == pivot)
 			do_operation(data, PA);
 		else
+		{
 			do_operation(data, RRB);
-		rb_count--;
+			rb_count--;
+		}
 	}
 	if (data->a.top == pivot)
 		do_operation(data, PB);

@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/23 16:59:29 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/04 18:59:48 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,10 @@ void	push_swap(t_data *data)
 {
 	int	size;
 
-	mark_if_sorted_a(data);
+	if (data->b.size == 0 || (data->b.top && data->b.top->partition))
+		mark_if_sorted_a(data);
 	size = partition_size(data, data->a.top);
-	print_stacks(data);
+	// print_stacks(data);
 	if (size <= 1 && data->b.size == 0)
 		return ;
 	else if (size == 2)

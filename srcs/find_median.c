@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:20:42 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/23 16:41:58 by fnichola         ###   ########.fr       */
+/*   Updated: 2021/12/26 22:22:37 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_stack_elem	*find_median(t_stack_elem *start, int size)
 	}
 	quick_sort(&array, 0, size - 1);
 	median_value = array[size / 2];
+	free(array);
 	ptr = start;
 	i = 0;
 	while (i < size)
