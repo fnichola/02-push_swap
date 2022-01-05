@@ -1,0 +1,10 @@
+2022-01-05
+Using array sort to pick best pivot, no other optimizations.
+
+100 (tested 1000 times):
+Average = 969
+Max = 1013
+
+500 (tested 100 times):
+Average = 6699
+Max = 6830
