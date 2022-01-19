@@ -8,3 +8,27 @@ Max = 1013
 500 (tested 100 times):
 Average = 6699
 Max = 6830
+
+----------------
+2022-01-19
+"search ahead a"
+check if there are any values that need to be pushed before executing
+rotate operations.
+
+100:
+Average = 919
+Max = 958
+
+500:
+Average = 6375
+Max = 6503
+
+----
+"search ahead a & b"
+100:
+Average = 888
+Max = 929
+
+500:
+Average = 6226
+Max = 6392

@@ -6,33 +6,43 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/04 19:42:06 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:46:31 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/**
- * @brief Return element before partition or bottom element,
- * whichever comes first.
- * 
- * @param stack_top 
- * @return t_stack_elem* 
- */
-// static t_stack_elem	*select_pivot(t_stack_elem *stack_top)
-// {
-// 	t_stack_elem	*ptr;
+int		search_ahead_a(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
+{
+	t_stack_elem	*stack_ptr;
 
-// 	ptr = stack_top;
-// 	while (ptr)
-// 	{
-// 		if (!ptr->prev || ptr->prev->partition)
-// 			break ;
-// 		else
-// 			ptr = ptr->prev;
-// 	}
-// 	return (ptr);
-// }
+	stack_ptr = stack_top;
+	while (size--)
+	{
+		if (stack_ptr->value < pivot->value)
+			return (1);
+		if (stack_ptr == pivot)
+			return (1);
+		stack_ptr = stack_ptr->prev;
+	}
+	return (0);
+}
+
+int		search_ahead_b(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
+{
+	t_stack_elem	*stack_ptr;
+
+	stack_ptr = stack_top;
+	while (size--)
+	{
+		if (stack_ptr->value > pivot->value)
+			return (1);
+		if (stack_ptr == pivot)
+			return (1);
+		stack_ptr = stack_ptr->prev;
+	}
+	return (0);
+}
 
 void	quick_sort_a(t_data *data)
 {
@@ -47,15 +57,18 @@ void	quick_sort_a(t_data *data)
 	// ft_printf("pivot = %d\n", pivot->value);
 	pivot->pivot_marker = 1;
 	// print_stacks(data);
-	while (size--)
+	while (size)
 	{
-		if (data->a.top->value < pivot->value)
+		if (!search_ahead_a(data->a.top, pivot, size))
+			break ;
+		else if (data->a.top->value < pivot->value)
 			do_operation(data, PB);
 		else
 		{
 			do_operation(data, RA);
 			ra_count++;
 		}
+		size--;
 	}
 	pivot->partition = 1;
 	pivot->pivot_marker = 0;
@@ -95,15 +108,18 @@ void	quick_sort_b(t_data *data)
 	// ft_printf("pivot = %d\n", pivot->value);
 	pivot->pivot_marker = 1;
 	// print_stacks(data);
-	while (size--)
+	while (size)
 	{
-		if (data->b.top->value > pivot->value)
+		if (!search_ahead_b(data->b.top, pivot, size))
+			break ;
+		else if (data->b.top->value > pivot->value)
 			do_operation(data, PA);
 		else
 		{
 			do_operation(data, RB);
 			rb_count++;
 		}
+		size--;
 	}
 	while (rb_count > 0)
 	{
