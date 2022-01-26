@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:20:42 by fnichola          #+#    #+#             */
-/*   Updated: 2021/12/26 22:22:37 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:53:45 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,17 @@
 #include <stdio.h>
 
 void	quick_sort(int **array, size_t start, size_t end);
-int		g_size;
+int		g_size; //OK???
 
-void	print_array(int **array)
-{
-	for (int i = 0; i < g_size; i++)
-	{
-		printf("%d ", (*array)[i]);
-	}
-	printf("\n");
-	getchar();
-}
-
-t_stack_elem	*find_median(t_stack_elem *start, int size)
+static int	*init_array(t_stack_elem *start, int size)
 {
 	t_stack_elem	*ptr;
 	int				*array;
-	int				median_value;
-	int			i;
+	int				i;
 
-	if (size == 0)
-		return NULL;
-	array = malloc(sizeof(int)*size);
-	// if (!array)
-		// exit(); // do something better?
+	array = malloc(sizeof(int) * size);
+	if (!array)
+		exit_error();
 	i = 0;
 	ptr = start;
 	while (i < size)
@@ -46,6 +33,19 @@ t_stack_elem	*find_median(t_stack_elem *start, int size)
 		ptr = ptr->prev;
 		i++;
 	}
+	return (array);
+}
+
+t_stack_elem	*find_median(t_stack_elem *start, int size)
+{
+	t_stack_elem	*ptr;
+	int				*array;
+	int				median_value;
+	int				i;
+
+	if (size == 0)
+		return (NULL);
+	array = init_array(start, size);
 	quick_sort(&array, 0, size - 1);
 	median_value = array[size / 2];
 	free(array);
@@ -61,13 +61,41 @@ t_stack_elem	*find_median(t_stack_elem *start, int size)
 	return (ptr);
 }
 
-static void		array_swap(int **array, size_t a, size_t b)
+static void	array_swap(int **array, size_t a, size_t b)
 {
 	int	temp;
 
 	temp = (*array)[a];
 	(*array)[a] = (*array)[b];
 	(*array)[b] = temp;
+}
+
+static void	quick_sort_loop(size_t start, int **array, int pivot, size_t end)
+{
+	p = start;
+	i = start + 1;
+	while ((*i)<= end)
+	{
+		if ((*array)[*i] < pivot)
+		{
+			if (*i == (*p) + 1)
+			{
+				array_swap(array, *i, *p);
+				(*p)++;
+			}
+			else
+			{
+				array_swap(array, *p, (*p) + 1);
+				array_swap(array, *i, *p);
+				(*p)++;
+			}
+		}
+		(*i)++;
+	}
+	if (p > start)
+		quick_sort(array, start, p - 1);
+	if (p < end)
+		quick_sort(array, p + 1, end);
 }
 
 void	quick_sort(int **array, size_t start, size_t end)
@@ -81,49 +109,5 @@ void	quick_sort(int **array, size_t start, size_t end)
 	if (start + 1 == end && (*array)[start] < (*array)[end])
 		return ;
 	pivot = (*array)[start];
-	p = start;
-	i = start + 1;
-	while (i <= end)
-	{
-		if ((*array)[i] < pivot)
-		{
-			if (i == p + 1)
-			{
-				array_swap(array, i, p);
-				p++;
-			}
-			else
-			{
-				array_swap(array, p, p + 1);
-				array_swap(array, i, p);
-				p++;
-			}
-		}
-		// print_array(array);
-		i++;
-	}
-	// print_array(array);
-	if (p > start)
-		quick_sort(array, start, p - 1);
-	if (p < end)
-		quick_sort(array, p + 1, end);
+	quick_sort_loop(start, array, pivot, end);
 }
-/*
-int	main(int argc, char **argv)
-{
-	int	*array;
-
-	if (argc < 2)
-		return (0);
-	g_size = argc - 1;
-	array = malloc(sizeof(int) * (argc - 1));
-	for (int i = 0; i < (argc - 1); i++)
-	{
-		array[i] = atoi(argv[i + 1]);
-	}
-	print_array(&array);
-	quick_sort(&array, 0, argc - 2);
-	free(array);
-	return (0);
-}
-*/

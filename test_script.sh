@@ -11,7 +11,7 @@ for i in `seq 1 100`
 do
 	ARG=`ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
 	count=$(./push_swap $(echo $ARG) | wc -l)
-	checker_result=$(./push_swap $(echo $ARG) | ./checker_linux $(echo $ARG))
+	checker_result=$(./push_swap $(echo $ARG) | ./checker_Mac $(echo $ARG))
 
 	if [ "$checker_result" = "KO" ]
 	then

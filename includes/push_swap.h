@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/24 21:05:46 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/26 18:07:40 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,9 @@ int				partition_size(t_data *data, t_stack_elem *stack_top);
 t_stack_elem	*find_median(t_stack_elem *start, int size);
 int				mark_if_sorted_a(t_data *data);
 int				partition_size(t_data *data, t_stack_elem *stack_top);
+void			do_op_ss(t_data *data);
+void			do_op_pa(t_data *data);
+void			do_op_pb(t_data *data);
+void			do_op_rr(t_data *data);
+void			do_op_rrr(t_data *data);
+void			exit_error(void);

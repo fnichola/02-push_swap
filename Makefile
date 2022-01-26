@@ -6,7 +6,7 @@
 #    By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 18:01:32 by fnichola          #+#    #+#              #
-#    Updated: 2022/01/24 21:16:46 by fnichola         ###   ########.fr        #
+#    Updated: 2022/01/26 15:56:16 by fnichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,10 @@ SRCS = srcs/main.c \
 	   srcs/stack.c \
 	   srcs/addl_stack_operations.c \
 	   srcs/game_operations.c \
+	   srcs/do_op.c \
 	   srcs/push_swap.c \
-	   srcs/quick_sort.c \
+	   srcs/quick_sort_a.c \
+	   srcs/quick_sort_b.c \
 	   srcs/find_median.c \
 	   srcs/utilities.c
 
