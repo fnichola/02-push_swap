@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/04 19:32:49 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:05:46 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,3 +63,5 @@ void			print_stacks(t_data *data);
 int				stack_range_size(t_stack_elem *start, t_stack_elem *end);
 int				partition_size(t_data *data, t_stack_elem *stack_top);
 t_stack_elem	*find_median(t_stack_elem *start, int size);
+int				mark_if_sorted_a(t_data *data);
+int				partition_size(t_data *data, t_stack_elem *stack_top);

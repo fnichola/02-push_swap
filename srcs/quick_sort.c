@@ -6,13 +6,13 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 16:53:11 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/19 17:46:31 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:11:47 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int		search_ahead_a(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
+int	search_ahead_a(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
 {
 	t_stack_elem	*stack_ptr;
 
@@ -28,7 +28,7 @@ int		search_ahead_a(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
 	return (0);
 }
 
-int		search_ahead_b(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
+int	search_ahead_b(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
 {
 	t_stack_elem	*stack_ptr;
 
@@ -44,32 +44,8 @@ int		search_ahead_b(t_stack_elem *stack_top, t_stack_elem *pivot, int size)
 	return (0);
 }
 
-void	quick_sort_a(t_data *data)
+static void	unrotate_a(t_data *data, t_stack_elem *pivot, size_t ra_count)
 {
-	t_stack_elem	*pivot;
-	int				size;
-	size_t			ra_count;
-
-	ra_count = 0;
-	size = partition_size(data, data->a.top);
-	// ft_printf("size = %d\n", size);
-	pivot = find_median(data->a.top, size);
-	// ft_printf("pivot = %d\n", pivot->value);
-	pivot->pivot_marker = 1;
-	// print_stacks(data);
-	while (size)
-	{
-		if (!search_ahead_a(data->a.top, pivot, size))
-			break ;
-		else if (data->a.top->value < pivot->value)
-			do_operation(data, PB);
-		else
-		{
-			do_operation(data, RA);
-			ra_count++;
-		}
-		size--;
-	}
 	pivot->partition = 1;
 	pivot->pivot_marker = 0;
 	if (data->a.top == pivot && ra_count == 0)
@@ -83,6 +59,36 @@ void	quick_sort_a(t_data *data)
 	}
 }
 
+
+// static void	unrotate_b(t_data *data, t_stack_elem *pivot, size_t ra_count)
+
+
+void	quick_sort_a(t_data *data)
+{
+	t_stack_elem	*pivot;
+	int				size;
+	size_t			ra_count;
+
+	ra_count = 0;
+	size = partition_size(data, data->a.top);
+	pivot = find_median(data->a.top, size);
+	pivot->pivot_marker = 1;
+	while (size)
+	{
+		if (!search_ahead_a(data->a.top, pivot, size))
+			break ;
+		else if (data->a.top->value < pivot->value)
+			do_operation(data, PB);
+		else
+		{
+			do_operation(data, RA);
+			ra_count++;
+		}
+		size--;
+	}
+	unrotate_a(data, pivot, ra_count);
+}
+
 void	quick_sort_b(t_data *data)
 {
 	t_stack_elem	*pivot;
@@ -91,7 +97,6 @@ void	quick_sort_b(t_data *data)
 
 	rb_count = 0;
 	size = partition_size(data, data->b.top);
-	// ft_printf("size = %d\n", size);
 	if (data->b.top->partition)
 	{
 		data->b.top->partition = 0;
@@ -105,9 +110,7 @@ void	quick_sort_b(t_data *data)
 		return ;
 	}
 	pivot = find_median(data->b.top, size);
-	// ft_printf("pivot = %d\n", pivot->value);
 	pivot->pivot_marker = 1;
-	// print_stacks(data);
 	while (size)
 	{
 		if (!search_ahead_b(data->b.top, pivot, size))
