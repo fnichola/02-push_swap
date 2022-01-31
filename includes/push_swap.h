@@ -6,13 +6,15 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/26 18:07:40 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:00:14 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include "../libft/libft.h"
 
-typedef struct		s_stack_elem {
+typedef struct s_stack_elem {
 	int					value;
 	int					partition;
 	int					pivot_marker;
@@ -20,12 +22,12 @@ typedef struct		s_stack_elem {
 	struct s_stack_elem	*next;
 }					t_stack_elem;
 
-typedef struct	s_stack {
+typedef struct s_stack {
 	t_stack_elem	*top;
 	int				size;
 }				t_stack;
 
-typedef struct	s_data {
+typedef struct s_data {
 	t_stack			a;
 	t_stack			b;
 	t_stack_elem	*sorted;
@@ -71,3 +73,5 @@ void			do_op_pb(t_data *data);
 void			do_op_rr(t_data *data);
 void			do_op_rrr(t_data *data);
 void			exit_error(void);
+
+#endif

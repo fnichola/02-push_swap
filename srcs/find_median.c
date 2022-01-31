@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:20:42 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/26 18:53:45 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/01/31 14:57:04 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdio.h>
 
 void	quick_sort(int **array, size_t start, size_t end);
-int		g_size; //OK???
 
 static int	*init_array(t_stack_elem *start, int size)
 {
@@ -72,25 +71,25 @@ static void	array_swap(int **array, size_t a, size_t b)
 
 static void	quick_sort_loop(size_t start, int **array, int pivot, size_t end)
 {
+	size_t	i;
+	size_t	p;
+
 	p = start;
 	i = start + 1;
-	while ((*i)<= end)
+	while (i <= end)
 	{
-		if ((*array)[*i] < pivot)
+		if ((*array)[i] < pivot)
 		{
-			if (*i == (*p) + 1)
-			{
-				array_swap(array, *i, *p);
-				(*p)++;
-			}
+			if (i == p + 1)
+				array_swap(array, i, p);
 			else
 			{
-				array_swap(array, *p, (*p) + 1);
-				array_swap(array, *i, *p);
-				(*p)++;
+				array_swap(array, p, p + 1);
+				array_swap(array, i, p);
 			}
+			p++;
 		}
-		(*i)++;
+		i++;
 	}
 	if (p > start)
 		quick_sort(array, start, p - 1);
@@ -101,8 +100,6 @@ static void	quick_sort_loop(size_t start, int **array, int pivot, size_t end)
 void	quick_sort(int **array, size_t start, size_t end)
 {
 	int		pivot;
-	size_t	i;
-	size_t	p;
 
 	if (start == end)
 		return ;
