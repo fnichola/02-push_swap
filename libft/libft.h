@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 17:53:49 by fnichola          #+#    #+#             */
-/*   Updated: 2021/10/24 21:44:39 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:10:38 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <errno.h>
 
 # define DEC "0123456789"
 # define HEX_UPPER "0123456789ABCDEF"

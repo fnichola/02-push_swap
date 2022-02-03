@@ -6,7 +6,7 @@
 #    By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/09 18:01:32 by fnichola          #+#    #+#              #
-#    Updated: 2022/01/26 15:56:16 by fnichola         ###   ########.fr        #
+#    Updated: 2022/02/02 21:41:08 by fnichola         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRCS = srcs/main.c \
 	   srcs/quick_sort_a.c \
 	   srcs/quick_sort_b.c \
 	   srcs/find_median.c \
-	   srcs/utilities.c
+	   srcs/utilities.c \
+	   srcs/ft_atoll.c
 
 ifdef WITH_BONUS
 endif

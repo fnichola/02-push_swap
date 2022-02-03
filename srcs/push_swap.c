@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:43:43 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/26 16:22:07 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/03 22:21:06 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static void	sort_6(t_data *data)
 {
 	t_stack_elem	*ptr;
 	t_stack_elem	*smallest_elem;
+	int				i;
 
 	while (data->a.size > 3)
 	{
@@ -61,8 +62,19 @@ static void	sort_6(t_data *data)
 				smallest_elem = ptr;
 			ptr = ptr->prev;
 		}
-		while (data->a.top != smallest_elem)
-			do_operation(data, RRA);
+		i = 0;
+		ptr = data->a.top;
+		while (ptr != smallest_elem)
+		{
+			i++;
+			ptr = ptr->prev;
+		}
+		if (i > data->a.size / 2)
+			while (data->a.top != smallest_elem)
+				do_operation(data, RRA);
+		else
+			while (data->a.top != smallest_elem)
+				do_operation(data, RA);
 		do_operation(data, PB);
 	}
 	sort_3(data);

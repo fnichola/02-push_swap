@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/31 15:00:14 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/03 22:26:49 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void			do_op_pb(t_data *data);
 void			do_op_rr(t_data *data);
 void			do_op_rrr(t_data *data);
 void			exit_error(void);
+long long		ft_atoll(const char *str);
+void			smart_rotate_6(t_data *data, t_stack_elem *smallest_elem);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:03:38 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/26 16:03:42 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/03 22:35:48 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,24 @@ int	partition_size(t_data *data, t_stack_elem *stack_top)
 		ptr = ptr->prev;
 	}
 	return (size);
+}
+
+void	smart_rotate_6(t_data *data, t_stack_elem *smallest_elem)
+{
+	int				i;
+	t_stack_elem	*ptr;
+
+	i = 0;
+	ptr = data->a.top;
+	while (ptr != smallest_elem)
+	{
+		i++;
+		ptr = ptr->prev;
+	}
+	if (i > data->a.size / 2)
+		while (data->a.top != smallest_elem)
+			do_operation(data, RRA);
+	else
+		while (data->a.top != smallest_elem)
+			do_operation(data, RA);
 }
