@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/08 16:13:43 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/26 16:12:08 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:47:57 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack_elem	*ft_stack_new_elem(int value)
 
 	new_elem = malloc(sizeof(t_stack_elem));
 	if (!new_elem)
-		exit_error();
+		return (NULL);
 	new_elem->prev = NULL;
 	new_elem->next = NULL;
 	new_elem->partition = 0;

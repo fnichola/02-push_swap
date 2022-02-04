@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:30:27 by fnichola          #+#    #+#             */
-/*   Updated: 2022/01/26 16:21:51 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:46:52 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	quick_sort_b(t_data *data)
 	if (check_stack_top_b(data, size))
 		return ;
 	pivot = find_median(data->b.top, size);
+	if (!pivot)
+		exit_error(data);
 	pivot->pivot_marker = 1;
 	quick_sort_loop_b(data, pivot, &rb_count, size);
 	unrotate_b(data, pivot, rb_count);

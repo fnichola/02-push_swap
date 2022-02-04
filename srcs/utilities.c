@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:03:38 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/03 22:35:48 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/04 16:55:03 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,12 @@ void	smart_rotate_6(t_data *data, t_stack_elem *smallest_elem)
 	else
 		while (data->a.top != smallest_elem)
 			do_operation(data, RA);
+}
+
+void	free_stacks(t_data *data)
+{
+	while (data->a.top)
+		free(ft_stack_pop(&data->a.top));
+	while (data->b.top)
+		free(ft_stack_pop(&data->b.top));
 }

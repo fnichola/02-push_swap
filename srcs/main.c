@@ -6,15 +6,16 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/03 20:52:17 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/04 17:52:09 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	exit_error(void)
+void	exit_error(t_data *data)
 {
 	ft_printf_fd(STDERR_FILENO, "Error!\n");
+	free_stacks(data);
 	exit(EXIT_FAILURE);
 }
 
@@ -45,8 +46,9 @@ static int	is_duplicate(int nbr, t_stack_elem *stack_ptr)
 
 static void	init_data(int argc, char **argv, t_data *data)
 {
-	int			i;
-	long long	nbr;
+	int				i;
+	long long		nbr;
+	t_stack_elem	*new_elem;
 
 	data->a.top = NULL;
 	data->b.top = NULL;
@@ -58,8 +60,11 @@ static void	init_data(int argc, char **argv, t_data *data)
 		nbr = ft_atoll(argv[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN || is_invalid(argv[i]) \
 		|| is_duplicate(nbr, data->a.top))
-			exit_error();
-		ft_stack_push(&data->a.top, ft_stack_new_elem(nbr));
+			exit_error(data);
+		new_elem = ft_stack_new_elem(nbr);
+		if (!new_elem)
+			exit_error(data);
+		ft_stack_push(&data->a.top, new_elem);
 	}
 	ft_stack_update_size(&data->a);
 }
@@ -70,5 +75,6 @@ int	main(int argc, char **argv)
 
 	init_data(argc, argv, &data);
 	push_swap(&data);
+	free_stacks(&data);
 	return (0);
 }
