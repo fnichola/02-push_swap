@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/04 17:52:09 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/04 21:33:04 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_error(t_data *data)
 {
-	ft_printf_fd(STDERR_FILENO, "Error!\n");
+	ft_printf_fd(STDERR_FILENO, "Error\n");
 	free_stacks(data);
 	exit(EXIT_FAILURE);
 }

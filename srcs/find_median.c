@@ -6,12 +6,11 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 17:20:42 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/04 16:46:52 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/04 21:35:46 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
 void	quick_sort(int **array, size_t start, size_t end);
 
