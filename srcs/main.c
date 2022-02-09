@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 16:26:10 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/04 21:33:04 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:22:05 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,33 @@ void	exit_error(t_data *data)
 	exit(EXIT_FAILURE);
 }
 
-static int	is_invalid(const char *str)
+static t_bool	is_invalid(const char *str)
 {
 	size_t	i;
 
-	i = 0;
+	if (!str[0] || (!ft_isdigit(str[0]) && str[0] != '-' && str[0] != '+'))
+		return (TRUE);
+	if ((str[0] == '-' || str[0] == '+') && !str[1])
+		return (TRUE);
+	i = 1;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && str[i] != '-' && str[i] != '+')
-			return (1);
+		if (!ft_isdigit(str[i]))
+			return (TRUE);
 		i++;
 	}
-	return (0);
+	return (FALSE);
 }
 
-static int	is_duplicate(int nbr, t_stack_elem *stack_ptr)
+static t_bool	is_duplicate(int nbr, t_stack_elem *stack_ptr)
 {
 	while (stack_ptr)
 	{
 		if (stack_ptr->value == nbr)
-			return (1);
+			return (TRUE);
 		stack_ptr = stack_ptr->prev;
 	}
-	return (0);
+	return (FALSE);
 }
 
 static void	init_data(int argc, char **argv, t_data *data)

@@ -6,13 +6,18 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 22:29:14 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/04 16:43:00 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:24:35 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
+
+typedef enum e_bool {
+	FALSE = 0,
+	TRUE = 1
+}				t_bool;
 
 typedef struct s_stack_elem {
 	int					value;
@@ -34,7 +39,7 @@ typedef struct s_data {
 	size_t			instruction_count;
 }				t_data;
 
-typedef enum operation {
+typedef enum e_operation {
 	SA = 0,
 	SB,
 	SS,

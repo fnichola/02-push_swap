@@ -6,13 +6,13 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:30:23 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/04 16:46:28 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:22:49 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	search_ahead_a(
+static t_bool	search_ahead_a(
 	t_stack_elem *stack_top, t_stack_elem *pivot, int size)
 {
 	t_stack_elem	*stack_ptr;
@@ -21,12 +21,12 @@ static int	search_ahead_a(
 	while (size--)
 	{
 		if (stack_ptr->value < pivot->value)
-			return (1);
+			return (TRUE);
 		if (stack_ptr == pivot)
-			return (1);
+			return (TRUE);
 		stack_ptr = stack_ptr->prev;
 	}
-	return (0);
+	return (FALSE);
 }
 
 static void	unrotate_a(t_data *data, t_stack_elem *pivot, size_t ra_count)
