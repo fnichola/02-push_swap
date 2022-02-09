@@ -14,3 +14,7 @@ push_swap takes a list of numbers as an argument and sorts the list using the fe
 - **rra : reverse rotate a** - shift down all elements of stack a by 1. The last element becomes the first one.
 - **rrb : reverse rotate b** -  shift down all elements of stack b by 1. The last element becomes the first one.
 - **rrr : rra** and **rrb** at the same time.
+
+![example](../assets/push_swap-example.png)
+
+![screenshot](../assets/push_swap-screenshot.png)
