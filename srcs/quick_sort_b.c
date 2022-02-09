@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:30:27 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/09 15:23:17 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:36:22 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ static int	check_stack_top_b(t_data *data, int size)
 		return (0);
 }
 
+/**
+ * Run the quick_sort algorithm on stack b. The median is used as a pivot and
+ * all numbers higher than the median are pushed to stack a. The pivot element
+ * remains at the top of stack b.
+ */
 void	quick_sort_b(t_data *data)
 {
 	t_stack_elem	*pivot;

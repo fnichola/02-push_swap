@@ -6,7 +6,7 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:30:23 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/09 15:22:49 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:36:27 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ static void	unrotate_a(t_data *data, t_stack_elem *pivot, size_t ra_count)
 	}
 }
 
+/**
+ * Run the quick_sort algorithm on stack a. The median is used as a pivot and
+ * all numbers lower than the median are pushed to stack b. Finally, the pivot
+ * element is pushed to stack b and marked as a "partition" to keep track of
+ * which numbers have been sorted.
+ */
 void	quick_sort_a(t_data *data)
 {
 	t_stack_elem	*pivot;

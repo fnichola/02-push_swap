@@ -6,12 +6,15 @@
 /*   By: fnichola <fnichola@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 21:03:38 by fnichola          #+#    #+#             */
-/*   Updated: 2022/02/04 16:55:03 by fnichola         ###   ########.fr       */
+/*   Updated: 2022/02/09 15:40:33 by fnichola         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/**
+ * Check if stack a is already sorted. If it is, update data->sorted.
+ */ 
 int	mark_if_sorted_a(t_data *data)
 {
 	t_stack_elem	*ptr;
@@ -51,6 +54,10 @@ int	partition_size(t_data *data, t_stack_elem *stack_top)
 	return (size);
 }
 
+/**
+ * Choose the most efficient direction to rotate stack a during
+ * bubble sort (ra or rra).
+ */
 void	smart_rotate_6(t_data *data, t_stack_elem *smallest_elem)
 {
 	int				i;
